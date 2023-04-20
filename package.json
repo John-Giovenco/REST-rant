@@ -13,7 +13,6 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2"
   },
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/John-Giovenco/REST-rant.git"
