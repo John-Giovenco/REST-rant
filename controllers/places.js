@@ -1,8 +1,11 @@
 const router = require('express').Router()
 const places = require('../models/places.js')
 
+router.get('/', (req, res) => {
+  res.render('places/index', { places })
+})
+
 router.post('/', (req, res) => {
-  console.log(req.body)
   if (!req.body.pic) {
     // Default image if one is not provided
     req.body.pic = 'http://placekitten.com/400/400'
@@ -17,6 +20,10 @@ router.post('/', (req, res) => {
   res.direct('/places')
 })
 
+router.get('/new', (req, res) => {
+  res.render('places/new')
+})
+
 router.get('/:id', (req, res) => {
   let id = Number(req.params.id)
   if (isNaN(id)) {
@@ -28,14 +35,6 @@ router.get('/:id', (req, res) => {
   else {
     res.render('places/show', { place: places[id], id})
   }
-})
-
-router.get('/new', (req, res) => {
-    res.render('places/new')
-})
-
-router.get('/:id', (req, res) => {
-    res.send('GET /places/:id stub')
 })
 
 router.put('/:id', (req, res) => {
@@ -64,7 +63,6 @@ router.put('/:id', (req, res) => {
       res.redirect(`/places/${id}`)
   }
 })
-
 
 router.delete('/:id', (req, res) => {
   let id = Number(req.params.id)

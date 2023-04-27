@@ -11,8 +11,7 @@ h1 {
     margin-right: 20px;
     margin-left: 20px;
     background-color: white;
-  }
-  
+  }  
   
   nav {
     background-color: cornflowerblue;
@@ -37,4 +36,14 @@ nav a {
 nav a:hover {
     color: pink;
     text-decoration: none;
+}
+
+#Chia-Shake {
+  width: 500px;
+  height: 500px;
+}
+
+#oops {
+  width: 500px;
+  height: 500px;
 }
