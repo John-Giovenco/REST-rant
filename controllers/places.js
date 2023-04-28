@@ -17,7 +17,7 @@ router.post('/', (req, res) => {
     req.body.state = 'USA'
   }
   places.push(req.body)
-  res.direct('/places')
+  res.direct ('/places')
 })
 
 router.get('/new', (req, res) => {
