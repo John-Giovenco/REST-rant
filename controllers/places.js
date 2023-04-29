@@ -19,16 +19,16 @@ router.get('/:id', (req, res) => {
     res.render('error404')
   }
   else {
-    res.render('places/show', { place: places[id], id})
+    res.render('places/show', { place: places[id], id })
   }
 })
 router.get('/:id/edit', (req, res) => {
   let id = Number(req.params.id)
   if (isNaN(id)) {
-      res.render('error404')
+    res.render('error404')
   }
   else if (!places[id]) {
-      res.render('error404')
+    res.render('error404')
   }
   else {
     res.render('places/edit', { place: places[id], id })
@@ -47,33 +47,33 @@ router.post('/', (req, res) => {
     req.body.state = 'USA'
   }
   places.push(req.body)
-  res.render('/places')
+  res.redirect('/places')
 })
 
 router.put('/:id', (req, res) => {
   let id = Number(req.params.id)
   if (isNaN(id)) {
-      res.render('error404')
+    res.render('error404')
   }
   else if (!places[id]) {
-      res.render('error404')
+    res.render('error404')
   }
   else {
-      // Dig into req.body and make sure data is valid
-      if (!req.body.pic) {
-          // Default image if one is not provided
-          req.body.pic = 'http://placekitten.com/400/400'
-      }
-      if (!req.body.city) {
-          req.body.city = 'Anytown'
-      }
-      if (!req.body.state) {
-          req.body.state = 'USA'
-      }
+    // Dig into req.body and make sure data is valid
+    if (!req.body.pic) {
+      // Default image if one is not provided
+      req.body.pic = 'http://placekitten.com/400/400'
+    }
+    if (!req.body.city) {
+      req.body.city = 'Anytown'
+    }
+    if (!req.body.state) {
+      req.body.state = 'USA'
+    }
 
-      // Save the new data into places[id]
-      places[id] = req.body
-      res.redirect(`/places/${id}`)
+    // Save the new data into places[id]
+    places[id] = req.body
+    res.redirect(`/places/${id}`)
   }
 })
 
@@ -91,13 +91,5 @@ router.delete('/:id', (req, res) => {
   }
 })
 
-
-router.post('/:id/rant', (req, res) => {
-    res.send('GET /places/:id/rant stub')
-})
-
-router.delete('/:id/rant/:rantId', (req, res) => {
-    res.send('GET /places/:id/rant/:rantId stub')
-})
 
 module.exports = router
