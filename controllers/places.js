@@ -1,6 +1,10 @@
 const router = require('express').Router()
 const db = require('../models')
 
+router.get('/new', (req, res) => {
+  res.render('places/new')
+})
+
 router.get('/', (req, res) => {
     db.Place.find()
     .then((places) => {
@@ -10,6 +14,32 @@ router.get('/', (req, res) => {
       console.log(err) 
       res.render('error404')
     })
+})
+
+router.get('/:id', (req, res) => {
+  let id = Number(req.params.id)
+  console.log(id)
+  if (isNaN(id)) {
+    res.render('error404')
+  }
+  else if (!places[id]) {
+    res.render('error404')
+  }
+  else {
+    res.render('places/show', { place: places[id], id })
+  }
+})
+router.get('/:id/edit', (req, res) => {
+  let id = Number(req.params.id)
+  if (isNaN(id)) {
+    res.render('error404')
+  }
+  else if (!places[id]) {
+    res.render('error404')
+  }
+  else {
+    res.render('places/edit', { place: places[id], id })
+  }
 })
 
 router.post('/', (req, res) => {
