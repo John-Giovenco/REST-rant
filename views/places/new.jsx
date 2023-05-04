@@ -26,12 +26,10 @@ function new_form () {
                 <div className="form-group">
                     <label htmlFor="cuisines">Cuisines</label>
                     <input className="form-control" id="cuisines" name="cuisines" required/>
-<<<<<<< HEAD
-                </div><div className="form-group">
+                </div>
+                <div className="form-group">
                     <label htmlFor="founded">Founded Year</label>
                     <input className="form-control" id="founded" name="founded" />
-=======
->>>>>>> 8164406cdf7202068f36a5e6f30a50cbd9385d57
                 </div>
                 <input className="btn btn-primary" type="submit" value="Add Place" />
             </form>
