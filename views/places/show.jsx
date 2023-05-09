@@ -7,7 +7,25 @@ function show (data) {
         No comments yet!
       </h3>
     )
+    let rating = (
+      <h3 className="inactive">
+        not yet rated
+      </h3>
+    )
     if (data.place.comments.length) {
+      let sumRatings = data.place.comments.reduce((tot, c) => {
+        return tot + c.stars
+      }, 0)
+      let averageRating = Math.round(sumRatings / data.place.coments.length)
+      let start = ''
+      for (let i = 0; i < averageRating; i++) {
+        stars += 'â­ï¸'
+      }
+      rating = (
+        <h3>
+          {stars} stars
+        </h3>
+      )
       comments = data.place.comments.map(c => {
         return (
           <div className="border">
@@ -33,8 +51,11 @@ function show (data) {
                 </div>
             </div>
             <div className="col-sm-6">
-                <h1>{ data.name }</h1>
-                <h2>Rating</h2>
+                <h1>{ data.place.name }</h1>
+                <h2>
+                  Rating 
+                </h2>
+                {rating}
                     <p>not rated</p>
                 <h3>
                     Located in {data.place.city}, {data.place.state}
@@ -85,7 +106,7 @@ function show (data) {
                   <input type="checkbox" id="rant" name="rant" className="form-control" />
                 </div>
               </div>
-              <input type="submit" className="btn btn-primary" value="Add Comment" />
+              <input type="submit" className="btn btn-primary" value="Update Place" />
             </form>
           </main>
         </Def>
