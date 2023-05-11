@@ -25,7 +25,7 @@ function edit_form (data) {
                 </div>
                 <div className="form-group">
                     <label htmlFor="cuisines">Cuisines</label>
-                    <input type="url" id="cuisines" name="cuisines" value={data.place.cuisines} required/>
+                    <input id="cuisines" name="cuisines" value={data.place.cuisines} required/>
                 </div>
                 <div className="row"></div>
                 <div className="form-group col-sm-4">
